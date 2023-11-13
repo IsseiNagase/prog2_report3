@@ -15,6 +15,7 @@ public class Enemy {
     public int attack;
     public boolean dead;
 
+    
     /**
      * コンストラクタ。名前、最大HP、攻撃力を指定する。
      * @param name モンスター名
@@ -35,10 +36,14 @@ public class Enemy {
      * @param hero 攻撃対象
      */
     public void attack(Hero hero){
+        if (!dead) {
         int damage = (int)(Math.random() * attack);
         System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, hero.name, damage);
         hero.wounded(damage);
+    }else {
+        System.out.printf("%sは既に倒れているので攻撃できません。\n", name);
     }
+}
 
     /**
      * 自身へ攻撃されたときのダメージ処理をするメソッド。
